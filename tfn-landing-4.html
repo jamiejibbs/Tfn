@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Freedom Network – Join TFN</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black: #050810; --navy: #0a0f1e; --card: #0d1424; --border: #1a2540;
+    --cyan: #00d4ff; --cyan-dim: rgba(0,212,255,0.15); --cyan-glow: rgba(0,212,255,0.4);
+    --white: #f0f4ff; --muted: #6b7fa3; --green: #00e676;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: "Inter", sans-serif; font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+
+  .hero { min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px 20px 60px; position: relative; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,212,255,0.08) 0%, transparent 70%), var(--black); }
+  .hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none; }
+  .hero-badge { width: 120px; height: 120px; border-radius: 50%; border: 2px solid var(--cyan); box-shadow: 0 0 40px var(--cyan-glow), 0 0 80px rgba(0,212,255,0.15); margin-bottom: 28px; display: flex; align-items: center; justify-content: center; animation: pulse-logo 3s ease-in-out infinite; position: relative; z-index: 1; }
+  .hero-badge span { font-family: "Bebas Neue", sans-serif; font-size: 36px; color: var(--cyan); letter-spacing: 0.05em; }
+  @keyframes pulse-logo { 0%, 100% { box-shadow: 0 0 40px var(--cyan-glow), 0 0 80px rgba(0,212,255,0.15); } 50% { box-shadow: 0 0 60px var(--cyan-glow), 0 0 120px rgba(0,212,255,0.25); } }
+  .hero-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: var(--cyan); margin-bottom: 12px; position: relative; z-index: 1; }
+  .hero-title { font-family: "Bebas Neue", sans-serif; font-size: clamp(56px, 14vw, 96px); line-height: 0.92; letter-spacing: 0.03em; color: var(--white); margin-bottom: 8px; position: relative; z-index: 1; }
+  .hero-title span { color: var(--cyan); text-shadow: 0 0 30px var(--cyan-glow); }
+  .hero-sub { font-size: 15px; color: var(--muted); margin-bottom: 32px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; position: relative; z-index: 1; }
+  .hero-markets { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 40px; position: relative; z-index: 1; }
+  .market-tag { background: var(--cyan-dim); border: 1px solid rgba(0,212,255,0.3); color: var(--cyan); font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 5px 12px; border-radius: 3px; }
+  .cta-primary { display: inline-block; background: var(--cyan); color: #000; font-weight: 700; font-size: 15px; letter-spacing: 0.06em; text-transform: uppercase; padding: 16px 40px; border-radius: 4px; text-decoration: none; transition: all 0.2s; box-shadow: 0 4px 30px rgba(0,212,255,0.35); position: relative; z-index: 1; }
+  .cta-primary:active { background: #fff; }
+
+  section { padding: 80px 20px; max-width: 900px; margin: 0 auto; }
+  .section-label { font-size: 11px; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: var(--cyan); margin-bottom: 16px; }
+  .section-title { font-family: "Bebas Neue", sans-serif; font-size: clamp(36px, 8vw, 56px); letter-spacing: 0.04em; color: var(--white); margin-bottom: 40px; line-height: 1; }
+
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .why-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 24px; }
+  .why-icon { font-size: 28px; margin-bottom: 12px; display: block; }
+  .why-card h3 { font-size: 14px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--white); margin-bottom: 6px; }
+  .why-card p { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+  .results-section { background: var(--navy); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 80px 20px; }
+  .results-inner { max-width: 900px; margin: 0 auto; }
+  .results-ticker { display: flex; gap: 10px; flex-wrap: wrap; }
+  .result-badge { background: rgba(0,230,118,0.1); border: 1px solid rgba(0,230,118,0.3); color: var(--green); font-size: 12px; font-weight: 700; letter-spacing: 0.08em; padding: 6px 14px; border-radius: 3px; text-transform: uppercase; }
+
+  .steps-list { display: flex; flex-direction: column; }
+  .step { display: flex; gap: 24px; align-items: flex-start; padding: 28px 0; border-bottom: 1px solid var(--border); }
+  .step:last-child { border-bottom: none; }
+  .step-num { flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%; background: var(--cyan-dim); border: 1.5px solid var(--cyan); color: var(--cyan); font-family: "Bebas Neue", sans-serif; font-size: 20px; display: flex; align-items: center; justify-content: center; }
+  .step-body h3 { font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+  .step-body p { font-size: 14px; color: var(--muted); margin-bottom: 12px; }
+  .ref-box { background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 14px 18px; margin-top: 8px; }
+  .ref-label { font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+  .ref-code { font-family: monospace; font-size: 20px; font-weight: 700; color: var(--cyan); letter-spacing: 0.1em; }
+  .btn-vantage { display: inline-block; background: transparent; border: 1.5px solid var(--cyan); color: var(--cyan); font-weight: 700; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; padding: 12px 28px; border-radius: 4px; text-decoration: none; margin-top: 12px; }
+  .btn-telegram { display: inline-flex; align-items: center; gap: 10px; background: #229ED9; color: #fff; font-weight: 700; font-size: 15px; padding: 16px 32px; border-radius: 4px; text-decoration: none; box-shadow: 0 4px 20px rgba(34,158,217,0.35); margin-top: 8px; }
+  .btn-telegram svg { width: 20px; height: 20px; fill: white; }
+
+  .manifesto-section { background: var(--navy); border-top: 1px solid var(--border); padding: 80px 20px; }
+  .manifesto-inner { max-width: 700px; margin: 0 auto; text-align: center; }
+  .manifesto-inner blockquote { font-family: "Bebas Neue", sans-serif; font-size: clamp(26px, 5vw, 40px); line-height: 1.2; letter-spacing: 0.04em; color: var(--white); margin-bottom: 32px; }
+  .manifesto-inner blockquote span { color: var(--cyan); }
+  .manifesto-inner p { font-size: 15px; color: var(--muted); max-width: 540px; margin: 0 auto 32px; line-height: 1.7; }
+
+  .disclaimer { padding: 40px 20px; max-width: 800px; margin: 0 auto; border-top: 1px solid var(--border); }
+  .disclaimer p { font-size: 11px; color: #3d4e6e; line-height: 1.6; text-align: center; }
+  footer { background: var(--navy); border-top: 1px solid var(--border); padding: 24px 20px; text-align: center; }
+  footer p { font-size: 12px; color: var(--muted); }
+  footer span { color: var(--cyan); }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-badge"><span>TFN</span></div>
+  <p class="hero-eyebrow">Welcome to</p>
+  <h1 class="hero-title">The Freedom<br><span>Network</span></h1>
+  <p class="hero-sub">Forex &bull; Gold &bull; Indices &bull; Crypto &bull; Oil</p>
+  <div class="hero-markets">
+    <span class="market-tag">Live Signals</span>
+    <span class="market-tag">20+ Markets</span>
+    <span class="market-tag">Community</span>
+    <span class="market-tag">Daily TPs</span>
+  </div>
+  <a href="#join" class="cta-primary">Join The Network →</a>
+</div>
+
+<section>
+  <p class="section-label">Why TFN</p>
+  <h2 class="section-title">Trade Smarter.<br>Grow Together.</h2>
+  <div class="why-grid">
+    <div class="why-card"><span class="why-icon">📈</span><h3>Live Buy & Sell Signals</h3><p>Real-time trade alerts with clear entry, stop loss and multiple take profit targets.</p></div>
+    <div class="why-card"><span class="why-icon">🎯</span><h3>Multiple TP Targets</h3><p>Every signal comes with TP1, TP2 and TP3 — scale out or ride the full move.</p></div>
+    <div class="why-card"><span class="why-icon">📊</span><h3>20+ Markets Traded</h3><p>Forex pairs, Gold, Indices, Oil and Crypto. Opportunity every single session.</p></div>
+    <div class="why-card"><span class="why-icon">🤝</span><h3>Active Community Chat</h3><p>Not a signal group. A trading community. Share ideas, grow together, stay sharp.</p></div>
+    <div class="why-card"><span class="why-icon">🔥</span><h3>Live Trade Management</h3><p>Real-time updates as trades run — TP hits, SL moves, and market commentary.</p></div>
+    <div class="why-card"><span class="why-icon">💬</span><h3>Direct Support From Jamie</h3><p>Personal access. Questions answered. You are not just a number here.</p></div>
+  </div>
+</section>
+
+<div class="results-section">
+  <div class="results-inner">
+    <p class="section-label">Recent Results</p>
+    <h2 class="section-title">Winning Across<br>Every Session</h2>
+    <div class="results-ticker">
+      <span class="result-badge">🏆 NZDUSD TP3 ✓</span>
+      <span class="result-badge">🏆 GBPUSD TP3 ✓</span>
+      <span class="result-badge">🏆 USOIL TP3 ✓</span>
+      <span class="result-badge">🏆 USDCHF TP3 ✓</span>
+      <span class="result-badge">🏆 GBPNZD TP3 ✓</span>
+      <span class="result-badge">🏆 GBPJPY TP1 ✓</span>
+      <span class="result-badge">🏆 CADJPY TP3 ✓</span>
+      <span class="result-badge">🏆 EURUSD TP3 ✓</span>
+    </div>
+  </div>
+</div>
+
+<section id="join">
+  <p class="section-label">How It Works</p>
+  <h2 class="section-title">5 Steps To<br>Get Inside</h2>
+  <div class="steps-list">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h3>Open a Vantage Live Account</h3>
+        <p>Use the link below — you must register through this link to be eligible for the group.</p>
+        <div class="ref-box">
+          <div class="ref-label">Your Referral Code</div>
+          <div class="ref-code">St5H4wzw</div>
+        </div>
+        <a class="btn-vantage" href="https://www.vantagemarkets.com/open-live-account/?affid=MjQwMDYzMzg=&invitecode=St5H4wzw" target="_blank" rel="noopener">Open Vantage Account →</a>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h3>Verify Your Account</h3>
+        <p>Complete your KYC identity verification directly with Vantage. Usually takes a few minutes.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h3>Fund Your Account & Download MT5</h3>
+        <p>Deposit any amount you are comfortable starting with. Vantage will email your live MT5 login — download MetaTrader 5 and log in.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <h3>Message Jamie on Telegram</h3>
+        <p>Once your Vantage account is active, send the message below.</p>
+        <div class="ref-box" style="margin-bottom:12px;">
+          <div class="ref-label">Send This Message</div>
+          <div class="ref-code" style="font-size:16px;">READY ✅</div>
+        </div>
+        <a class="btn-telegram" href="https://t.me/Jamiejibbs" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.88 13.803l-2.967-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.834.946l-.525-.19z"/></svg>
+          Message Jamie on Telegram
+        </a>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <h3>Get Added to The Freedom Network ✅</h3>
+        <p>Jamie verifies you are under his Vantage IB and adds you to the group. From that moment you are live — signals, updates, community and everything TFN has to offer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="manifesto-section">
+  <div class="manifesto-inner">
+    <p class="section-label">Our Mission</p>
+    <blockquote>"We Are Not Building A Signal Group.<br>We Are Building <span>A Community.</span>"</blockquote>
+    <p>TFN is for people who want to learn to read markets, grow their accounts consistently, and be surrounded by others doing the same. Signals are the tool — financial freedom is the goal.</p>
+    <a href="#join" class="cta-primary">Join The Freedom Network →</a>
+  </div>
+</div>
+
+<div class="disclaimer">
+  <p>Trading foreign exchange, commodities, indices and cryptocurrencies involves significant risk and is not suitable for all investors. Past performance does not guarantee future results. The Freedom Network does not provide financial advice. All trading decisions are made solely at your own risk. Always apply proper risk management and never trade with funds you cannot afford to lose.</p>
+</div>
+
+<footer>
+  <p>© 2025 <span>The Freedom Network</span> &nbsp;|&nbsp; Powered by TFN Trading Systems</p>
+</footer>
+
+</body>
+</html>
